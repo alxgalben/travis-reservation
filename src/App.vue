@@ -1,29 +1,75 @@
 <template>
   <div id="app">
-    <div class="todo-wrapper">
-      <div class="todo-container">
-        <TodoList :todos="todos"/>
-        <div class="todo-create-btn-container">
-          <div class="app-button">
-            Create
-          </div>
-        </div>
-      </div>
+    <div class="form-container">
+    <form>
+  <div class="form-group">
+    <label for="surname">Surname</label>
+    <input type="text" class="form-control" id="surname" placeholder="Enter your surname">
+  </div>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="flightNumber">Flight Number</label>
+    <input type="text" class="form-control" id="flightNumber" placeholder="Enter your flight number">
     </div>
-    <div class="modal">
-      <div class="modal-content">
-        Modal Window
-      </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Country</label>
+      <select  class="form-control" id="inputState">
+        <option selected>Choose...</option>
+      </select>
     </div>
   </div>
+  <div class="form-group">
+    <label for="birthDate">Birth Date</label>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#datePickerModal">
+      Select Birth Date
+    </button>
+    <!-- Modal for date picker -->
+    <div class="modal" id="datePickerModal">
+      <!-- Your date picker content here -->
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="flightNumber">Flight Number</label>
+    <input type="text" class="form-control" id="flightNumber" placeholder="Enter your flight number">
+  </div>
+  <div class="form-group">
+    <label for="hearAbout">How did you hear about us?</label>
+    <select class="form-control" id="hearAbout">
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <!-- Add other options -->
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="specialRequest">Special Request</label>
+    <textarea class="form-control" id="specialRequest" rows="3" placeholder="Enter your special request"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+  </div>
+</div>
 </template>
 
 <script>
-import TodoList from '@/components/TodoList';
+
 
 export default {
   components: {
-    TodoList
+
   },
   data() {
     return {
@@ -50,61 +96,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 // $color-red: red; -> variable
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+      justify-content: start;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, .4);
+.form-container {
+      width: 30%;
+      margin: 0 auto;
+    }
+ 
 
-  &-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-}
-
-.app-button {
-  font-size: 20px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #795899;
-  color: white;
-  font-weight: bold;
-  width: 20%;
-  margin: 0 auto;
-}
-
-.todo {
-  &-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-
-  &-container {
-     /* margin: 0 auto; */
-    width: 400px;
-    min-height: 400px;
-    background-color: #ededed;
-  }
-}
 </style>
