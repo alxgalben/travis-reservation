@@ -9,19 +9,21 @@
             <div class="row">
               <div class="col">
                 <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
+                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" v-model="formData.firstName" :class="{ 'is-invalid': !validateFirstName() }">
+                <div class="invalid-feedback">Please enter a valid first name.</div>
               </div>
               <div class="col">
                 <label for="surname">Last Name</label>
-                <input type="text" class="form-control" id="surname" placeholder="Enter your last name">
+                <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" v-model="formData.lastName" :class="{ 'is-invalid': !validateLastName() }">
+                <div class="invalid-feedback">Please enter a valid last name.</div>
               </div>
             </div>
 
             <div class="row">
               <div class="col">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Enter your email">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email" v-model="formData.email" :class="{ 'is-invalid': !validateEmail() }">
+                <div class="invalid-feedback">Please enter a valid email address.</div>
               </div>
               <div class="col">
                 <label for="inputState">Country</label>
@@ -34,7 +36,8 @@
             <div class="row">
               <div class="col">
                 <label for="phone">Phone</label>
-                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" v-model="formData.phone" :class="{ 'is-invalid': !validatePhoneNumber() }">
+                <div class="invalid-feedback">Please enter a valid phone number.</div>
               </div>
               <div class="col">
                 <label for="dob">Date of Birth</label>
@@ -95,7 +98,7 @@
         <h1 style="font-size: 70px;"><span class="strikethrough">144 €</span></h1>
           <h1 style="font-size: 200px;">123 €</h1>
         </div>
-    <div class="row rowcard">
+    <div class="row rowcard" style="margin-bottom: 20px;">
         <div class="col-sm-4">
             <div class="card" style="text-align: center;">
                 <div class="card-body">
@@ -124,7 +127,7 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-warning" style="font-weight: bold;">COMPLETE YOU BOOKING</button>
+    <button type="submit" class="btn btn-warning" style="font-weight: bold; margin-bottom: 20px;">COMPLETE YOU BOOKING</button>
 </div>
 
 
@@ -135,6 +138,34 @@
 
 
 export default {
+  data() {
+    return {
+      formData: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+      }
+    };
+  },
+  methods: {
+    validateFirstName() {
+      const regex = /^[A-Za-z\s]{2,}$/;
+      return regex.test(this.formData.firstName);
+    },
+    validateLastName() {
+      const regex = /^[A-Za-z\s]{2,}$/;
+      return regex.test(this.formData.lastName);
+    },
+    validateEmail() {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(this.formData.email);
+    },
+    validatePhoneNumber() {
+      const regex = /^\d{10}$/;
+      return regex.test(this.formData.phone);
+    },
+  },
   mounted() {
     const input = document.querySelector("#phone");
     window.intlTelInput(input, {
@@ -160,7 +191,7 @@ export default {
 .main{
   margin-left: 50px;
   min-width: 550px;
-  height: 80vh;
+  height: 85vh;
 }
 
 card-title {
@@ -190,7 +221,7 @@ label {
 
 .another {
   margin: 0 50px;
-  height: 80vh;
+  height: 85vh;
   min-width: none;
 }
 
