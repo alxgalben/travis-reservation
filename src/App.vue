@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="card w-25 p-3">
+    <div class="card main w-25 p-3">
       <div class="card-body">
         <h5 class="card-title">Personal Data</h5>
         <div class="form-container">
@@ -71,12 +71,63 @@
                 placeholder="Enter your special request"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-warning">Submit</button>
+            <div class="alert alert-warning" role="alert">
+              Make the full payment now and get a 5% DISCOUNT of the rental rate ont he spot! Use the "PAYNOW" coupon to get the discount.
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Do you have a voucher?" aria-label="Do you have a voucher?" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-warning" type="button">Apply discount!</button>
+              </div>
+            </div>
           </form>
 
         </div>
       </div>
     </div>
+
+    <div class="card another w-75 p-3">
+      <div class="card-body" style="text-align: center;">
+        <div class="alert alert-warning" role="alert" style="text-align: center;">
+          <h1>THE FINAL PRICE WILL BE:</h1>
+        </div>
+        <h1 style="font-size: 70px;"><span class="strikethrough">144 €</span></h1>
+          <h1 style="font-size: 200px;">123 €</h1>
+        </div>
+    <div class="row rowcard">
+        <div class="col-sm-4">
+            <div class="card" style="text-align: center;">
+                <div class="card-body">
+                    <h1><p class="card-text">0 €</p></h1>
+                    <input type="radio" class="btn-check" name="payment-option" id="btn-check-0" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="btn-check-0" style="margin-top: 15px;">I WILL PAY LATER!</label><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card" style="text-align: center;">
+                <div class="card-body">
+                    <h1><p class="card-text">50 €</p></h1>
+                    <input type="radio" class="btn-check" name="payment-option" id="btn-check-50" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="btn-check-50" style="margin-top: 15px;">I PAY PART NOW!</label><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card" style="text-align: center;">
+                <div class="card-body">
+                    <h1><p class="card-text">123 €</p></h1>
+                    <input type="radio" class="btn-check" name="payment-option" id="btn-check-123" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="btn-check-123" style="margin-top: 15px;">I PAY FULL NOW!</label><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-warning" style="font-weight: bold;">COMPLETE YOU BOOKING</button>
+</div>
+
+
   </div>
 </template>
 
@@ -106,15 +157,16 @@ export default {
   margin: 0;
 }
 
-.card {
+.main{
   margin-left: 50px;
   min-width: 550px;
+  height: 80vh;
+}
 
-  &-title {
+card-title {
     font-size: 40px;
     margin-bottom: 20px;
   }
-}
 
 .form-group {
   margin: 10px 0;
@@ -130,5 +182,34 @@ export default {
 
 label {
   margin-bottom: 3px;
+}
+
+.alert {
+  margin: 20px 0;
+}
+
+.another {
+  margin: 0 50px;
+  height: 80vh;
+  min-width: none;
+}
+
+.strikethrough {
+  position: relative;
+}
+.strikethrough:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 5px solid;
+  border-color: inherit;
+  
+  -webkit-transform:rotate(-5deg);
+  -moz-transform:rotate(-5deg);
+  -ms-transform:rotate(-5deg);
+  -o-transform:rotate(-5deg);
+  transform:rotate(-5deg);
 }
 </style>
